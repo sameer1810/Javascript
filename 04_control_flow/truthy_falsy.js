@@ -26,7 +26,7 @@ if (Object.keys(emptyObj).length === 0) {//Object.keys(emptyObj)->will return ar
 }
 
 //++++++++ Nullish Coalescing Operator (??): null undefined ++++++++++
-//onlu created for null and undefined
+//only created for null and undefined
 
 
 let val1;
