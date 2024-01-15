@@ -65,3 +65,16 @@ javascript
 java
 python
 */
+
+
+//FOR EACH doesnt return any value.
+const coding1 = ["js", "ruby", "java", "python", "cpp"]
+
+
+const values = coding1.forEach( (item) => {
+    //console.log(item);
+    return item
+ } )
+
+console.log(values);
+//op->undefined
