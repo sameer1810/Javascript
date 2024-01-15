@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai aur code</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <div class="parent">
+        <!-- this is a comment -->
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector('.parent')
+    // console.log(parent);
+    //OP->
+    /* <div class="parent">
+    //    <!-- this is a comment -->
+    //    <div class="day">Monday</div>
+    //    <div class="day">Tuesday</div>
+    //   <div class="day">Wednesday</div>
+    //    <div class="day">Thursday</div>
+    //   </div> */
+
+    // console.log(parent.children);
+    //op->
+    //HTML collection(4) [div.day,div.day,div.day,div.day]
+
+    //accesing an element
+    // console.log(parent.children[1].innerHTML);
+    //op->Tuesday
+
+    // for (let i = 0; i < parent.children.length; i++) {
+    //      console.log(parent.children[i].innerHTML); 
+    // }
+    //op->
+    //Monday
+    //Tuesday
+    //Wednesday
+    //Thursday
+
+    //styling element
+    parent.children[1].style.color = "orange"
+    
+    
+    // console.log(parent.firstElementChild);
+    //op->
+    //<div class="day">Monday</div>
+
+    // console.log(parent.lastElementChild);
+    //op->
+    //<div class="day">Thursday</div>
+
+
+    const dayOne = document.querySelector('.day')
+    // console.log(dayOne);
+    //<div class="day">Monday</div>
+    //querySelector-->therefore gives first value
+
+    
+    // children to parent
+    // console.log(dayOne.parentElement);
+    //op->return parent element
+    // <div class="parent">
+    //    <!-- this is a comment -->
+    //    <div class="day">Monday</div>
+    //    <div class="day">Tuesday</div>
+    //   <div class="day">Wednesday</div>
+    //    <div class="day">Thursday</div>
+    //   </div> */
+
+
+    // console.log(dayOne.nextElementSibling);
+    //op->
+    // <div class="day">Tuesday</div>
+
+    console.log("NODES: ", parent.childNodes);
+    //return NodeList(9) 
+    //try to run
+    
+</script>
+</html>
