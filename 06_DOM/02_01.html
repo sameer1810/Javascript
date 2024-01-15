@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>DOM learning</title>
+    <style>
+        .bg-black{
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div >
+        <h1  id="title" class="heading">DOM learning on Chai aur code <span style="display: none;">test text</span></h1>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <input type="password" name="" id="">
+
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<!--
+            ++ Target element by ID ++
+
+            document.getElementById('title')
+            //op->gives the whole element
+            <h1  id="title" class="heading">DOM learning on Chai aur code <span style="display: none;">test text</span></h1>
+
+            //accessing other elements
+
+            document.getElementById('title').id
+            //op-> 'title'
+
+            document.getElementById('title').class
+            //op-> undefined
+
+            document.getElementById('title').className
+            //op-> 'heading'
+
+            document.getElementById('title').getAttribute('id')
+            //op-> 'title'
+
+            document.getElementById('title').getAttribute('class')
+            //op-> 'heading'
+
+            document.getElementById('title').getAttribute('class','test')
+            //op->undefined
+            //but new class is set for that element
+            // it over writes
+
+             
+-->
+
+<!--
+
+    const title = document.getElementById('title')
+
+    ++  styling an element  ++
+
+    title.style.backgroundColor ="red"
+
+    title.style.padding = "5px" 
+-->
+
+<!--
+
+    //taking content from title
+    
+    title.innerText
+    //op->DOM learning on Chai aur code 
+    //only return visible text
+
+    title.textContent
+    //op->DOM learning on Chai aur code test text
+    //give all the text
+
+    title.innerHTML
+    //op->DOM learning on Chai aur code <span style="display: none;">test text</span>
+    //give tag as well
+    
+-->
+
+<!--
+
+    +++ DIFFERENT SELECTORS +++
+
+    document.querySelector('h2')
+    //op-><h2>Lorem ipsum dolor sit.</h2>
+    //op->gives first h2 on the page
+
+
+    document.querySelector('#title')
+    //op->
+    //<h1  id="title" class="heading">DOM learning on Chai aur code <span style="display: none;">test text</span></h1>
+
+
+     document.querySelector('.heading')
+    //op->
+    //<h1  id="title" class="heading">DOM learning on Chai aur code <span style="display: none;">test text</span></h1>
+
+
+    document.querySelector('input[type="password"]')
+    //op->
+    //<input type="password" name="" id="">
+    //more data comes in brwoser console
+
+    //THIS IS SAME AS CSS SELECTORS
+-->
+
+<!--
+
+    ++ changing the color of one ul ++
+
+    const myul = document.querySelector('ul')
+    const turnRed =myul.querySelector('li')
+    turnRed.style.backgroundColor = "red"
+    turnRed.innerText = "five" //chnage inner text
+
+-->
+
+<!--
+
+    ++ querySelectorAll
+
+    document.querySelectorAll('li')
+    //op-> NodeList(3) [li,li,li]
+    //it is not an array
+
+    //nodelist and html collection are not pure array
+
+    const tempList =document.querySelectorAll('li')
+    tempList.style.color = 'green'
+    //error
+
+    tempList[0].style.color = 'green'
+    //will do it
+    //op->green
+
+    tempList.forEach(function (li){
+        li.style.backgroundColor ="green"
+    })
+    //correct way
+-->
+
+<!--
+
+    ++ get element by className ++
+
+     const tempClassList=document.getElementByClassName('list-item')
+     //return HTML collection(4) [li.list-item,li.list-item,
+            li.list-item,li.list-item]
+     // we can't use forEach on HTML collection
+
+
+     ++ CONVERTING HTML collevtion to an array  ++
+
+     Array.from(tempClassList)
+    
+     const myConvertedArray = Array.from(tempClassList);
+     myConvertedArray.forEach(function(li){
+        li.style.color = 'pink'
+     })
+     // will work fine
+
+     
+
+
+-->
