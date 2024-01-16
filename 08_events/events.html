@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }  //not  a good way
+
+
+     // attachEvent() //method 2
+    // jQuery - on   //method 3
+    
+    //imp events=>
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+
+    //best method
+    document.getElementById('images').addEventListener('click', function(e){
+         console.log("clicked inside the ul");
+    }, false)
+    //third parameter is false, by default it remain false
+
+    document.getElementById('owl').addEventListener('click', function(e){
+         console.log("owl clicked");
+         e.stopPropagation()
+    }, false)
+    
+        //++ in the above example
+        //when on owl img clicked , first "owl clicked" comes as op 
+        // then "clicked inside the ul" this
+        //and it is called Bubbling and it is default case that's why third parameter is false
+        //of we use true as third para then "clicked inside the ul" will come first 
+        // then "owl clicked" comes as op
+        //and it is called capturing
+        //or if use e.stopPropagation() 
+        //then it only shows "owl clicked" comes as op ++
+
+
+    document.getElementById('google').addEventListener('click',function(e){
+         e.preventDefault();//it will prevent the deafult behaviour ie link will not go to google
+         e.stopPropagation()
+         console.log("google clicked");
+    }, false)
+   
+    //task ->when click on img the image should disappear
+    document.querySelector('#images').addEventListener('click', function(e){
+        
+        /*console.log(e.target.parentNode);
+        let removeIt = e.target.parentNode
+        removeIt.remove()
+        //this code will remove the whole ul if we clicked on li in place of img
+        */
+        console.log(e.target.tagName);
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+    
+        
+    })
+    
+    //removeIt.parentNode.removeChild(removeIt)
+</script>
+</html>
