@@ -38,22 +38,33 @@
     document.getElementById('images').addEventListener('click', function(e){
          console.log("clicked inside the ul");
     }, false)
+    //e is event object
     //third parameter is false, by default it remain false
 
+
+    //EVENT PROPOGATION
+    //evenr propogation has two context-
+    //1. Event Bubbling -->when default third para is false
+    //2.Event capturing -->when default third para is true
+    
     document.getElementById('owl').addEventListener('click', function(e){
          console.log("owl clicked");
          e.stopPropagation()
     }, false)
     
         //++ in the above example
-        //when on owl img clicked , first "owl clicked" comes as op 
+       
+         //when default third value is false then op-> owl clicked , clicked inside the ul
+         //when default third value is true then op->  clicked inside the ul,owl clicked
+         //when on owl img clicked , first "owl clicked" comes as op 
         // then "clicked inside the ul" this
         //and it is called Bubbling and it is default case that's why third parameter is false
-        //of we use true as third para then "clicked inside the ul" will come first 
+        //if we use true as third para then "clicked inside the ul" will come first 
         // then "owl clicked" comes as op
         //and it is called capturing
         //or if use e.stopPropagation() 
-        //then it only shows "owl clicked" comes as op ++
+        //then it only shows "owl clicked" comes as op 
+        //++
 
 
     document.getElementById('google').addEventListener('click',function(e){
@@ -62,13 +73,15 @@
          console.log("google clicked");
     }, false)
    
+
     //task ->when click on img the image should disappear
     document.querySelector('#images').addEventListener('click', function(e){
         
         /*console.log(e.target.parentNode);
         let removeIt = e.target.parentNode
         removeIt.remove()
-        //this code will remove the whole ul if we clicked on li in place of img
+        //this code will remove the whole ui if we clicked on li in place of img
+        //because li parent is ul so whole ul will remove
         */
         console.log(e.target.tagName);
         if (e.target.tagName === 'IMG') {
