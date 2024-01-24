@@ -104,8 +104,8 @@ consumePromiseFive()
 //getAllUsers()
 
 
-//.then format of same work as above
-fetch('https://api.github.com/users/hiteshchoudhary')
+//.then method of same work as above using fetch
+fetch('https://api.github.com/users/hiteshchoudhary')//fetch('',{})-->we can aslo add object in fetch -->check docs
 .then((response) => {
     return response.json()
 })
