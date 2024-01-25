@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React {
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:300"
+
+            //requirement
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.bind(this))
+                //.addEventListener('click', this.handleClick)//whit will not give the op of line 26 ==> therefore we need to bind this
+
+        }
+        handleClick(){
+            console.log("button clicked");
+            console.log(this.server);
+            // console.log(this);//op->give whole react class
+    
+        }
+    }
+
+    const app = new React()
+
+/*
+
+the bind method is used to explicitly set the value of this when the event handler function (handleClick) is called. Let's break down the code to understand why bind is used in this context:
+
+Problem of this Context:
+
+The issue arises because when the event listener calls the handleClick method, the value of this inside handleClick is not automatically set to the instance of the React class (app). Instead, it is set to the element that triggered the event (in this case, the button).
+Using bind Method:
+
+To ensure that this inside handleClick refers to the instance of the React class (app), the bind method is used. The bind method creates a new function that, when invoked, has its this value set to a specific value (this in this case).
+
+this.handleClick.bind(this) creates a new function where this is explicitly set to the current instance of the React class. This ensures that when the button is clicked, the handleClick method is executed with the correct this context.
+
+Without bind, this inside handleClick would refer to the button element, and accessing this.server would result in undefined or an error.
+
+So, in summary, using bind(this) ensures that the handleClick method is executed with the correct this context, allowing access to the properties of the React class.
+*/
+</script>
+</html>
+
