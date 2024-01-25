@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure aur chai</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+    <script>
+
+    //lexical scoping
+
+    // function init() {
+    //     let name = "Mozilla"; 
+    //     function displayName() {
+    //         console.log(name); 
+    //     }
+    //     displayName();
+    // }
+    // init();
+
+    // function outer(){
+    //     let username = "hitesh"
+    //     console.log("OUTER", secret);
+    //     function inner(){
+    //         let secret = "my123"
+    //         console.log("inner", username);
+    //     }
+    //     function innerTwo(){
+    //         console.log("innerTwo", username);
+    //         console.log(secret);
+    //     }
+    //     inner()
+    //     innerTwo()
+
+    // }
+    // outer()
+    // console.log("TOO OUTER", username);
+
+
+     //closure
+
+    // function makeFunc() {
+    //     const name = "Mozilla";
+    //     function displayName() {
+    //         console.log(name);
+    //     }
+    //     return displayName;
+    // }
+
+    // const myFunc = makeFunc();
+    // myFunc();
+
+    </script>
+    <script>
+
+        //closure example 2
+
+        // document.getElementById("orange").onclick = function(){
+        //     document.body.style.backgroundColor = `orange`
+        // }
+        // document.getElementById("green").onclick = function(){
+        //     document.body.style.backgroundColor = `green`
+        // }
+        
+        //generalise code for above task
+        function clickHandler(color){
+            // document.body.style.backgroundColor = `${color}`//will execute directly when called
+
+            return function(){//hence we will use this
+                document.body.style.backgroundColor = `${color}`
+            }
+        }
+
+        document.getElementById('orange').onclick = clickHandler("orange")
+        document.getElementById('green').onclick = clickHandler("green")
+
+        /*
+        LEXICAL SCOPING->
+        Lexical scoping, also known as static scoping, is a feature in programming languages where the scope of a variable is determined by its location within the source code. In JavaScript, variables are lexically scoped, meaning their scope is defined by the position of the variable declaration in the code.
+        CLOSURE->
+        A closure is created when a function is defined inside another function (nested functions) and the inner function has access to the outer function's variables, including its parameters. Closures allow a function to "remember" the scope in which it was created, even if it is executed outside that scope.
+        */
+    </script>
+</html>
